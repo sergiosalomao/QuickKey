@@ -1,4 +1,4 @@
-#QuickKey 
+#QuickKey <br>
 Jogo desenvolvido em HTML com JAVASCRIPT <br>
 Caracteriticas:<br>
 1. Testa Velocidade de Digitação.<br>
