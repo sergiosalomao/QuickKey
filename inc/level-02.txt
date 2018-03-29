@@ -1,0 +1,1 @@
+O Spring Boot é uma ferramenta para o desenvolvimento de aplicações que utilizam o framework Spring sem que seja necessária praticamente nenhuma configuração. O Spring Boot é capaz de identificar quais as principais características da aplicação que está sendo desenvolvida e fazer automaticamente as configurações necessárias.

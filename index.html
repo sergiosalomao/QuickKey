@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>QuickKey - 1.0</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"> 
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="css/estilos.css" rel="stylesheet">
+  <!-- Funcões do Jogo-->
+ 
+ 
+  <script type="text/javascript" src="js/funcoes.js"></script>
+  <script type="text/javascript" src="js/preparaNovaPartida.js"></script>
+  <script type="text/javascript" src="js/paraCronometroProva.js"></script>
+  <script type="text/javascript" src="js/conf.js"></script>
+  <script type="text/javascript" src="js/iniciaJogo.js"></script>
+  <script type="text/javascript" src="js/checaPalavra.js"></script>
+  <script type="text/javascript" src="js/abreFileNivel.js"></script>
+  <script type="text/javascript" src="js/contar.js"></script>
+  <script type="text/javascript" src="js/mudaNivel.js"></script>
+  <script type="text/javascript" src="js/verificaCaracteresNiveis.js"></script>
+  <script type="text/javascript" src="js/marcaTexto.js"></script> <!-- FUNÇÃO QUE MARCA O TEXTO QUE ESTA SENDO DIGITADO -->
+  <script type="text/javascript" src="js/atualizaProgressBar.js"></script> <!-- FUNÇÃO QUE ATUALIZA A BARRA DE PROGRESSO -->
+  <script type="text/javascript" src="js/finalizajogo.js"></script> <!-- FUNÇÃO QUE FINALIZA O JOGO -->
+ 
+
+</head>
+
+<body onload="preparaNovaPartida()">
+
+  <div class="container">
+    <div class="centralizaHorizontal">
+      <img src="img/logo.png" class="centralizado" width="25%" height="25%">
+      <br>
+      <br>
+    </div>
+
+
+    <div id="menuButtons">
+      <button id="btnIniciar" type="button" class="btn btn-info btn-sm" onclick="iniciaJogo()">Iniciar</button>
+      <button id="btnParar" type="button" class="btn btn-danger btn-sm" onclick="paraCronometroProva()">Parar</button>
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+      
+        <div class="btn-group" role="group">
+          <button id="btnNivel" type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Niveis
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnNivel" >
+            <a id="menuNivel1" class="dropdown-item" onclick="mudaNivel(1)"></a>
+            <a id="menuNivel2" class="dropdown-item" onclick="mudaNivel(2)"></a>
+            <a id="menuNivel3" class="dropdown-item" onclick="mudaNivel(3)"></a>
+          </div>
+        </div>
+      </div>
+      
+      
+      <button type="button" class="btn btn-info btn-sm" onclick="location.href='pages/listaRecords.php'">Records</button>
+      <button id="btnSobre" type="button" class="btn btn-info btn-sm" >Sobre</button>
+      <button type="button" class="btn btn-info btn-sm" onclick="atualizaProgressBar()" >Sair</button>
+      
+    </div>
+    <br>
+
+    <table width="100%">
+      <tr>
+        <td>
+          <p id="statusTempoProva" class="statusTempoProva">
+        </td>
+     
+        <td>
+          <p id="statusTempoRestante" class="statusTempoRestante">Tempo Restante: [0]</p>
+        </td>
+
+        <td>
+          <p id="statusNivel" class="statusNivel">Nivel: Facil</p>
+        </td>
+      </tr>
+    </table>
+     
+   
+
+    <div class="form-group">
+      <!-- texto de desafio -->
+      <textarea class="form-control campo-padrao" rows="10" id="textoDesafio" onfocus=" marcaTexto()" >Quick Key 1.0 - Developer - Sergio Salomão</textarea>
+    </div>  
+
+    <div class="form-group">
+      <!-- texto de entrada -->
+      <textarea  rows="5" class="form-control campo-padrao" id="textoEntrada" onkeypress="checaPalavra(),contar()" onkeyup="atualizaProgressBar()" ></textarea>
+    
+  </div>
+  <!--barra de prograsso -->
+<div class="progress">
+    <div id="progressBar" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  <table width="100%">
+     
+
+      <tr>
+        <td>
+          <p id="qtdPalavras" class="statusPalavra">Palavras[0] </p>
+        </td>
+    
+        <td>
+          <p id="qtdChar" class="statusChar">Caracteres[0]</p>
+        </td>
+
+        <td>
+          <p id="statusMediaCaractere" class="statusMediaChar" title="Media de Caracteres por segundos">Media[0]</p>
+        </td>
+
+        <td>
+            <p id="statusMediaPalavras" class="statusMediaPalavras" title="Media de Palavras por segundos">Media[0]</p>
+          </td>
+
+      </tr>
+    </table>
+
+
+    <footer class="blog-footer rodape">
+      <p>Developer
+        <a href="https://github.com/sergiosalomao">Sergio Salomão</a>.</p>
+    </footer>
+  </div>
+<!-- inputs de passagem de parametros -->
+
+<input type="hidden" id="maxProgressBar">
+<input type="hidden" id="tempCPS">
+<input type="hidden" id="tempPPS">
+<input type="hidden" id="checado">
+
+
+
+  <!-- arquivos Boootstrap -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
