@@ -1,6 +1,7 @@
-#QuickKey <br>
+
+<h3>QuickKey</h3><br>
 Jogo desenvolvido em HTML com JAVASCRIPT <br>
-Caracteriticas:<br>
+Caracteristicas:<br>
 1. Testa Velocidade de Digitação.<br>
 2. Exibe numero de caracteres digitados.<br>
 3. Exibe Palavras Digitadas.<br>
