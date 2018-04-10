@@ -21,7 +21,7 @@
       <br>
       <br>
     </div>
-    <h1 class="display-4 centralizaHorizontal">Ranking </h1>
+    <h1 class="display-4 ">Ranking </h1>
     <table class="table table-sm">
   <thead>
     <tr>
